@@ -1,5 +1,5 @@
 {
-  "name": "payload-base",
+  "name": "base-js",
   "description": "Website template for Payload",
   "version": "1.0.0",
   "main": "dist/server.js",
