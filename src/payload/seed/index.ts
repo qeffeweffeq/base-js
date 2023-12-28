@@ -17,6 +17,11 @@ import { projectsPage } from './projects-page'
 const collections = ['categories', 'media', 'pages', 'posts', 'projects', 'comments']
 const globals = ['header', 'settings', 'footer']
 
+const users = {
+  admin: 'admin@sgd.digital',
+  client: 'user@sgd.digital',
+}
+
 // Next.js revalidation errors are normal when seeding the database without a server running
 // i.e. running `yarn seed` locally instead of using the admin UI within an active app
 // The app is not running to revalidate the pages and so the API routes are not available
@@ -57,7 +62,7 @@ export const seed = async (payload: Payload): Promise<void> => {
   payload.logger.info(`— Seeding demo author and user...`)
 
   await Promise.all(
-    ['demo-author@payloadcms.com', 'demo-user@payloadcms.com'].map(async email => {
+    [users.admin, users.client].map(async email => {
       await payload.delete({
         collection: 'users',
         where: {
@@ -73,8 +78,8 @@ export const seed = async (payload: Payload): Promise<void> => {
     await payload.create({
       collection: 'users',
       data: {
-        email: 'demo-author@payloadcms.com',
-        name: 'Demo Author',
+        email: users.admin,
+        name: 'Admin',
         password: 'password',
         roles: ['admin'],
       },
@@ -82,8 +87,8 @@ export const seed = async (payload: Payload): Promise<void> => {
     await payload.create({
       collection: 'users',
       data: {
-        email: 'demo-user@payloadcms.com',
-        name: 'Demo User',
+        email: users.client,
+        name: 'Client',
         password: 'password',
         roles: ['user'],
       },
