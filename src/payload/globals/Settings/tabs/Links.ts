@@ -2,7 +2,7 @@ import type { Tab } from 'payload/types'
 
 import link from '../../../fields/link'
 
-export const legalTab: Tab = {
+export const linksTab: Tab = {
   label: {
     en: 'Links',
     it: 'Links',
