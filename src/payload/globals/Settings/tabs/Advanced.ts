@@ -22,7 +22,7 @@ export const advancedTab: Tab = {
               type: 'checkbox',
               label: {
                 en: 'Enable Dev Mode',
-                it: 'Abilita la Modalità Dev',
+                it: 'Modalità Dev',
               },
               admin: {
                 width: '20%',
