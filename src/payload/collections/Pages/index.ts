@@ -14,6 +14,16 @@ import { revalidatePage } from './hooks/revalidatePage'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
+  labels: {
+    singular: {
+      en: 'Page',
+      it: 'Pagina',
+    },
+    plural: {
+      en: 'Pages',
+      it: 'Pagine',
+    },
+  },
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'slug', 'updatedAt'],
@@ -42,6 +52,7 @@ export const Pages: CollectionConfig = {
       name: 'title',
       type: 'text',
       required: true,
+      localized: true,
     },
     {
       name: 'publishedAt',

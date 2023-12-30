@@ -84,6 +84,30 @@ export default buildConfig({
       handler: seed,
     },
   ],
+  i18n: {
+    fallbackLng: 'en',
+    debug: false,
+  },
+  localization: {
+    locales: [
+      {
+        code: 'en',
+        label: {
+          en: 'English',
+          it: 'Inglese',
+        },
+      },
+      {
+        code: 'it',
+        label: {
+          en: 'Italian',
+          it: 'Italiano',
+        },
+      },
+    ],
+    defaultLocale: 'en',
+    fallback: true,
+  },
   plugins: [
     redirects({
       collections: ['pages', 'posts'],
