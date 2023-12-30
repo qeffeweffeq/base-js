@@ -1,5 +1,9 @@
 import type { GlobalConfig } from 'payload/types'
 
+import { advancedTab } from './tabs/Advanced'
+import { generalTab } from './tabs/General'
+import { legalTab } from './tabs/Legal'
+
 export const Settings: GlobalConfig = {
   slug: 'settings',
   typescript: {
@@ -13,16 +17,8 @@ export const Settings: GlobalConfig = {
   },
   fields: [
     {
-      name: 'postsPage',
-      type: 'relationship',
-      relationTo: 'pages',
-      label: 'Posts page',
-    },
-    {
-      name: 'projectsPage',
-      type: 'relationship',
-      relationTo: 'pages',
-      label: 'Projects page',
+      type: 'tabs',
+      tabs: [generalTab, legalTab, advancedTab],
     },
   ],
 }

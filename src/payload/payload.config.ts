@@ -43,6 +43,7 @@ export default buildConfig({
       // Feel free to delete this at any time. Simply remove the line below and the import `BeforeDashboard` statement on line 15.
       beforeDashboard: [BeforeDashboard],
     },
+    css: path.resolve(__dirname, 'assets/css/utilities.scss'),
     webpack: config => ({
       ...config,
       resolve: {

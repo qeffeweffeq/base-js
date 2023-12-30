@@ -22,10 +22,16 @@ export type LinkAppearances = 'primary' | 'secondary' | 'default'
 type LinkType = (options?: {
   appearances?: LinkAppearances[] | false
   disableLabel?: boolean
+  disableHeading?: boolean
   overrides?: Record<string, unknown>
 }) => Field
 
-const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = {}) => {
+const link: LinkType = ({
+  appearances,
+  disableLabel = false,
+  disableHeading = false,
+  overrides = {},
+} = {}) => {
   const linkResult: Field = {
     name: 'link',
     type: 'group',
@@ -54,16 +60,14 @@ const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = 
               layout: 'horizontal',
               width: '50%',
             },
+            hidden: true,
           },
           {
-            name: 'newTab',
-            label: 'Open in new tab',
+            name: 'external',
             type: 'checkbox',
-            admin: {
-              width: '50%',
-              style: {
-                alignSelf: 'flex-end',
-              },
+            label: {
+              en: 'External Link',
+              it: 'Link esterno',
             },
           },
         ],
@@ -71,25 +75,36 @@ const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = 
     ],
   }
 
+  if (disableHeading) {
+    linkResult.admin.className = 'no-label'
+    linkResult.label = false
+  }
+
   const linkTypes: Field[] = [
     {
       name: 'reference',
-      label: 'Document to link to',
+      label: {
+        en: 'Page',
+        it: 'Pagina',
+      },
       type: 'relationship',
       relationTo: ['pages'],
       required: true,
       maxDepth: 1,
       admin: {
-        condition: (_, siblingData) => siblingData?.type === 'reference',
+        condition: (_, siblingData) => !siblingData?.external,
       },
     },
     {
       name: 'url',
-      label: 'Custom URL',
+      label: {
+        en: 'URL',
+        it: 'URL',
+      },
       type: 'text',
       required: true,
       admin: {
-        condition: (_, siblingData) => siblingData?.type === 'custom',
+        condition: (_, siblingData) => siblingData?.external,
       },
     },
   ]
@@ -103,23 +118,26 @@ const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = 
       },
     }))
 
-    linkResult.fields.push({
-      type: 'row',
-      fields: [
-        ...linkTypes,
-        {
-          name: 'label',
-          label: 'Label',
-          type: 'text',
-          required: true,
-          admin: {
-            width: '50%',
+    linkResult.fields = [
+      {
+        type: 'row',
+        fields: [
+          ...linkTypes,
+          {
+            name: 'label',
+            label: 'Label',
+            type: 'text',
+            required: true,
+            admin: {
+              width: '50%',
+            },
           },
-        },
-      ],
-    })
+        ],
+      },
+      ...linkResult.fields,
+    ]
   } else {
-    linkResult.fields = [...linkResult.fields, ...linkTypes]
+    linkResult.fields = [...linkTypes, ...linkResult.fields]
   }
 
   if (appearances !== false) {
