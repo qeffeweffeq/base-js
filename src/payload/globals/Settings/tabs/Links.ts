@@ -4,8 +4,8 @@ import link from '../../../fields/link'
 
 export const legalTab: Tab = {
   label: {
-    en: 'Legal',
-    it: 'Legale',
+    en: 'Links',
+    it: 'Links',
   },
   fields: [
     {
