@@ -44,8 +44,8 @@ export const legalTab: Tab = {
                 },
                 {
                   label: {
-                    en: 'Terms and Conditions',
-                    it: 'Termini e Condizioni',
+                    en: 'Terms & Conditions',
+                    it: 'Termini & Condizioni',
                   },
                   value: 'terms',
                 },
