@@ -11,7 +11,7 @@ export const advancedTab: Tab = {
       name: 'devMode',
       label: {
         en: 'Dev Mode',
-        it: 'Modalità Dev',
+        it: 'Dev Mode',
       },
       fields: [
         {
@@ -22,7 +22,7 @@ export const advancedTab: Tab = {
               type: 'checkbox',
               label: {
                 en: 'Enable Dev Mode',
-                it: 'Modalità Dev',
+                it: 'Attiva Dev Mode',
               },
               admin: {
                 width: '20%',

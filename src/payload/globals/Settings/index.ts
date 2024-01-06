@@ -2,7 +2,7 @@ import type { GlobalConfig } from 'payload/types'
 
 import { advancedTab } from './tabs/Advanced'
 import { generalTab } from './tabs/General'
-import { legalTab } from './tabs/Legal'
+import { linksTab } from './tabs/Links'
 
 export const Settings: GlobalConfig = {
   slug: 'settings',
@@ -18,7 +18,7 @@ export const Settings: GlobalConfig = {
   fields: [
     {
       type: 'tabs',
-      tabs: [generalTab, legalTab, advancedTab],
+      tabs: [generalTab, linksTab, advancedTab],
     },
   ],
 }
