@@ -10,7 +10,7 @@ export const image2: Omit<Media, 'id' | 'createdAt' | 'updatedAt'> = {
         },
         {
           type: 'link',
-          linkType: 'custom',
+          extarnel: true,
           url: 'https://unsplash.com/@sebastiansvenson?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText',
           newTab: true,
           children: [
@@ -24,7 +24,7 @@ export const image2: Omit<Media, 'id' | 'createdAt' | 'updatedAt'> = {
         },
         {
           type: 'link',
-          linkType: 'custom',
+          extarnel: true,
           url: 'https://unsplash.com/photos/d2w-_1LJioQ?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText',
           newTab: true,
           children: [
