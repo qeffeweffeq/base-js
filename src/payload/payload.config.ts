@@ -22,6 +22,7 @@ import { seed } from './endpoints/seed'
 import { Footer } from './globals/Footer'
 import { Header } from './globals/Header'
 import { Settings } from './globals/Settings'
+import { Menu } from './collections/Menu'
 
 const generateTitle: GenerateTitle = () => {
   return 'My Website'
@@ -66,7 +67,7 @@ export default buildConfig({
     },
   }),
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
-  collections: [Pages, Posts, Projects, Media, Categories, Users, Comments],
+  collections: [Pages, Posts, Projects, Media, Menu, Categories, Users, Comments],
   globals: [Settings, Header, Footer],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),

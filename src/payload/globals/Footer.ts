@@ -9,13 +9,18 @@ export const Footer: GlobalConfig = {
   },
   fields: [
     {
-      name: 'navItems',
+      name: 'menus',
+      label: {
+        en: 'Menus',
+        it: 'Menù',
+      },
       type: 'array',
-      maxRows: 6,
       fields: [
-        link({
-          appearances: false,
-        }),
+        {
+          name: 'menu',
+          type: 'relationship',
+          relationTo: 'menu',
+        },
       ],
     },
   ],

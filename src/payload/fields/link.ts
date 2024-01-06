@@ -23,15 +23,23 @@ type LinkType = (options?: {
   appearances?: LinkAppearances[] | false
   disableLabel?: boolean
   disableHeading?: boolean
+  hasImage?: boolean
+  hasSubMenus?: boolean
+  additionalFields?: Field[]
   overrides?: Record<string, unknown>
 }) => Field
 
-const link: LinkType = ({
-  appearances,
-  disableLabel = false,
-  disableHeading = false,
-  overrides = {},
-} = {}) => {
+const link: LinkType = (options = {}) => {
+  const {
+    appearances,
+    disableLabel = false,
+    disableHeading = false,
+    hasImage = false,
+    hasSubMenus = false,
+    additionalFields = [],
+    overrides = {},
+  } = options
+
   const linkResult: Field = {
     name: 'link',
     type: 'group',
@@ -43,24 +51,19 @@ const link: LinkType = ({
         type: 'row',
         fields: [
           {
-            name: 'type',
-            type: 'radio',
-            options: [
-              {
-                label: 'Internal link',
-                value: 'reference',
-              },
-              {
-                label: 'Custom URL',
-                value: 'custom',
-              },
-            ],
-            defaultValue: 'reference',
-            admin: {
-              layout: 'horizontal',
-              width: '50%',
+            name: 'hasImage',
+            type: 'checkbox',
+            label: {
+              en: 'Image',
+              it: 'Immagine',
             },
-            hidden: true,
+            hidden: !hasImage,
+            admin: {
+              style: {
+                flexGrow: '0',
+              },
+            },
+            defaultValue: false,
           },
           {
             name: 'external',
@@ -69,10 +72,29 @@ const link: LinkType = ({
               en: 'External Link',
               it: 'Link esterno',
             },
+            admin: {
+              style: {
+                flexGrow: '0',
+              },
+            },
           },
-        ],
+        ].filter(Boolean) as Field[],
       },
-    ],
+      {
+        name: 'image',
+        label: {
+          en: 'Image',
+          it: 'Immagine',
+        },
+        type: 'upload',
+        relationTo: 'media',
+        admin: {
+          width: '50%',
+          condition: (_: Partial<any>, siblingData: Partial<any>) => siblingData?.hasImage,
+        },
+        hidden: !hasImage,
+      },
+    ].filter(Boolean) as Field[],
   }
 
   if (disableHeading) {
@@ -160,6 +182,38 @@ const link: LinkType = ({
         description: 'Choose how the link should be rendered.',
       },
     })
+  }
+
+  if (hasSubMenus) {
+    linkResult.fields.push({
+      name: 'subMenu',
+      label: {
+        en: 'Sub Menu',
+        it: 'Sottomenù',
+      },
+      type: 'array',
+      fields: [
+        link({
+          ...options,
+          hasSubMenus: false,
+          additionalFields: [
+            {
+              name: 'subMenu',
+              label: {
+                en: 'Sub Menu',
+                it: 'Sottomenù',
+              },
+              type: 'array',
+              fields: [link({ ...options, hasSubMenus: false })],
+            },
+          ],
+        }),
+      ],
+    })
+  }
+
+  if (additionalFields.length) {
+    linkResult.fields = linkResult.fields.concat(additionalFields)
   }
 
   return deepMerge(linkResult, overrides)

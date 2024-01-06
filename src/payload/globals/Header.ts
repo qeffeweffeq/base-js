@@ -1,7 +1,5 @@
 import type { GlobalConfig } from 'payload/types'
 
-import link from '../fields/link'
-
 export const Header: GlobalConfig = {
   slug: 'header',
   access: {
@@ -9,13 +7,19 @@ export const Header: GlobalConfig = {
   },
   fields: [
     {
-      name: 'navItems',
+      name: 'menus',
+      label: {
+        en: 'Menus',
+        it: 'Menù',
+      },
       type: 'array',
-      maxRows: 6,
+      maxRows: 2,
       fields: [
-        link({
-          appearances: false,
-        }),
+        {
+          name: 'menu',
+          type: 'relationship',
+          relationTo: 'menu',
+        },
       ],
     },
   ],
