@@ -27,7 +27,7 @@ export const home: Partial<Page> = {
           },
           {
             type: 'link',
-            linkType: 'custom',
+            external: true,
             url: '/admin',
             children: [
               {
@@ -40,7 +40,7 @@ export const home: Partial<Page> = {
           },
           {
             type: 'link',
-            linkType: 'custom',
+            external: true,
             url: 'https://github.com/payloadcms/payload/tree/main/templates/website',
             newTab: true,
             children: [
@@ -127,7 +127,7 @@ export const home: Partial<Page> = {
                 },
                 {
                   type: 'link',
-                  linkType: 'custom',
+                  external: true,
                   url: '/admin',
                   children: [
                     {
@@ -166,7 +166,7 @@ export const home: Partial<Page> = {
                 },
                 {
                   type: 'link',
-                  linkType: 'custom',
+                  external: true,
                   url: '/login',
                   children: [
                     {
@@ -179,7 +179,7 @@ export const home: Partial<Page> = {
                 },
                 {
                   type: 'link',
-                  linkType: 'custom',
+                  external: true,
                   url: '/create-account',
                   children: [
                     {
@@ -245,7 +245,7 @@ export const home: Partial<Page> = {
                 },
                 {
                   type: 'link',
-                  linkType: 'custom',
+                  external: true,
                   url: '/admin/collections/comments',
                   children: [
                     {
@@ -284,7 +284,7 @@ export const home: Partial<Page> = {
                 },
                 {
                   type: 'link',
-                  linkType: 'custom',
+                  external: true,
                   url: '/account',
                   children: [
                     {
@@ -375,7 +375,7 @@ export const home: Partial<Page> = {
                 },
                 {
                   type: 'link',
-                  linkType: 'custom',
+                  external: true,
                   url: '/admin',
                   children: [
                     {
@@ -499,7 +499,7 @@ export const home: Partial<Page> = {
             },
             {
               type: 'link',
-              linkType: 'custom',
+              external: true,
               url: '/admin',
               children: [
                 {
