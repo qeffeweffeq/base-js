@@ -36,7 +36,7 @@ export const staticHome: Page = {
           },
           {
             type: 'link',
-            extarnel: true,
+            external: true,
             url: '/admin',
             children: [
               {
@@ -60,7 +60,7 @@ export const staticHome: Page = {
           },
           {
             type: 'link',
-            extarnel: true,
+            external: true,
             url: 'https://github.com/payloadcms/payload/tree/main/templates/website',
             newTab: true,
             children: [
@@ -95,7 +95,7 @@ export const staticHome: Page = {
             },
             {
               type: 'link',
-              extarnel: true,
+              external: true,
               url: '/admin',
               children: [
                 {
