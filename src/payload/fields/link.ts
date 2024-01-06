@@ -150,6 +150,7 @@ const link: LinkType = (options = {}) => {
             label: 'Label',
             type: 'text',
             required: true,
+            localized: true,
             admin: {
               width: '50%',
             },

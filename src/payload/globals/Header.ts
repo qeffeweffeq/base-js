@@ -14,6 +14,7 @@ export const Header: GlobalConfig = {
       },
       type: 'array',
       maxRows: 2,
+      localized: true,
       fields: [
         {
           name: 'menu',
