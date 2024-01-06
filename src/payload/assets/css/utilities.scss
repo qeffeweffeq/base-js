@@ -1,7 +1,18 @@
+:root {
+  --field-padding: 1.5rem;
+  --divider-height: 1px;
+  --divider-color: var(--theme-elevation-100);
+}
+
 .group-field.no-label {
   padding-top: 0;
 
   .group-field__header {
     display: none;
   }
+}
+
+.divider-top {
+  padding-top: var(--field-padding);
+  border-top: var(--divider-height) solid var(--divider-color);
 }
